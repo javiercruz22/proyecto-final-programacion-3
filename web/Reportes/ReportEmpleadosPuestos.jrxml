@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c0a93f9-2874-4557-be34-5f2c315680b1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="47"/>
+	<parameter name="puestoEmpleado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT e.id_duiempleado, p.nombrepuesto, (e.nombreempleado || ' ' || e.apellidoempleado) AS nombre, p.sueldo, e.telefonoempleado, e.direccionempleado
+FROM empleado e
+INNER JOIN puestos p ON p.idpuesto = e.puesto
+WHERE p.nombrepuesto = $P{puestoEmpleado}]]>
+	</queryString>
+	<field name="id_duiempleado" class="java.lang.String"/>
+	<field name="nombrepuesto" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="sueldo" class="java.lang.Double"/>
+	<field name="telefonoempleado" class="java.lang.String"/>
+	<field name="direccionempleado" class="java.lang.String"/>
+	<group name="EmpleadoPuesto">
+		<groupExpression><![CDATA[$F{nombrepuesto}]]></groupExpression>
+		<groupHeader>
+			<band height="84">
+				<staticText>
+					<reportElement x="13" y="12" width="531" height="20" uuid="de5971ea-c967-4d38-9129-44016091f314"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Puesto de Trabajo]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="13" y="44" width="531" height="20" uuid="8d0e8813-1cb3-455e-b7f4-45b1a0dd952e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombrepuesto}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="26" width="555" height="32" uuid="bb86aa40-5566-4e79-b51e-b9901f48f280"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WIFI.NET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="68" width="555" height="34" uuid="cd4645e8-b442-4d42-bbd2-09b4d23534df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Empleados y Puestos de Trabajo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="11" width="100" height="20" uuid="51583da9-1c40-43ad-a545-37c9fcf2c657"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="13" y="43" width="100" height="20" uuid="d4b838d3-ed10-461b-bad4-5c3e6c7f8b31"/>
+				<textFieldExpression><![CDATA[$F{id_duiempleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="43" width="138" height="20" uuid="28d2ba0f-27eb-4bff-9a78-43c7e2f2c2d3"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="136" y="11" width="138" height="20" uuid="500708cc-c6de-40fe-832c-cfeffc1ab1e2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="11" width="102" height="20" uuid="22a7261e-4dfa-4557-922f-435df96fdaa5"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sueldo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="291" y="43" width="100" height="20" uuid="14751518-e63d-4e45-b55f-55f8c03ded79"/>
+				<textFieldExpression><![CDATA[$F{sueldo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="402" y="11" width="102" height="20" uuid="b204021e-ee19-4d7a-8b15-f279d58d903f"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="43" width="100" height="20" uuid="3ae8bcdc-035a-413c-817f-b20579aff53d"/>
+				<text><![CDATA[telefonoempleado]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="424" y="15" width="80" height="20" uuid="6266bd11-c9f7-4991-90a2-1d249a450dce"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="504" y="15" width="40" height="20" uuid="5e76528a-a7d3-4d7b-942b-1e7d5b2c9d49"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="13" y="15" width="100" height="20" uuid="32365885-ea99-44c3-a87c-51166e3e9289"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
